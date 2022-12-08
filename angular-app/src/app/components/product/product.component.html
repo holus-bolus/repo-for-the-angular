@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+  <style>
+    .items-center {
+      display: flex;
+      align-items: center;
+      padding-bottom: 10px;
+      padding-left: 20px;
+      border: 1px solid grey;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .product-image {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .font-bold {
+      font-weight: 900;
+    }
+
+
+    .button {
+      padding-top: 10px;
+      padding-right: 25px;
+      padding-bottom: 10px;
+      padding-left: 25px;
+      border-radius: 10px;
+      background-color: greenyellow;
+      border: none;
+      font-weight: 700;
+      color: indigo;
+    }
+  </style>
+</head>
+<body>
+<div class="py-4 px-6 border rounded flex items-center mb-2">
+  <img [src]="product.image" [alt]="product.title" class="product-image">
+  <h2 class="mb-2 text-lg text-center">{{product.title}}</h2>
+  <p>Price : <span class="font-bold">{{ product.price | currency}}</span></p>
+  <button class="button" [ngClass]="{'bg-yellow-400':'details'}"
+          (click)="details = !details">{{ details ? 'Hide' : 'Show' }} details
+  </button>
+  <div *ngIf="details">
+    <p>{{ product.description}}</p>
+    <p>Rate: <span [ngStyle]="{fontWeight:'bold'}"> {{product.rating.rate}}</span></p>
+  </div>
+</div>
+</body>
+</html>
